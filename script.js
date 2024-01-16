@@ -118,9 +118,14 @@ class EvilCircle extends Shape {
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < this.size + ball.size) {
-          balls.pop();
+          ball.x = 0;
+          ball.y = 0;
+          ball.size = 0;
+          ball.velX = 0;
+          ball.velY = 0;
 
           count--;
+          ball.exits = false;
         }
       }
     }
