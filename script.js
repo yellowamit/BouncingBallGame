@@ -168,7 +168,7 @@ function loop() {
   requestAnimationFrame(loop);
   score.textContent = count;
   if (count === 0) {
-    alert("gameover");
+    alert("gameover!!!,refresh to restart");
   }
 }
 
