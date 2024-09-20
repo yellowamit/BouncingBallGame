@@ -1,1 +1,10 @@
-has some minor bugs for now will be fixed in updates
+- version 1.0 
+  - overview
+     - balls will be bouncing around u just have to use up,down,left,right buttons to move evil circle that captures balls
+     - circle remaining count on right corner
+     - refresh to restart
+  - built
+    - using javascript and canva api for colorfull balls
+- updated to version 2.0
+  - added: mouse,trackpad and touch support which was previously just physical buttons
+  - added: restart button instead of just a refresh promt
