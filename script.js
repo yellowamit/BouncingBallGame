@@ -1,5 +1,4 @@
 // set up canvas
-
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -7,18 +6,19 @@ const width = (canvas.width = window.innerWidth);
 const height = (canvas.height = window.innerHeight);
 
 // function to generate random number
-
 function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
 let count = 0;
 const score = document.querySelector("p");
+const restartButton = document.querySelector("#restartButton");
 
 // function to generate random RGB color value
-
 function randomRGB() {
   return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`;
 }
+
 class Shape {
   constructor(x, y, velX, velY) {
     this.x = x;
@@ -78,6 +78,7 @@ class Ball extends Shape {
     }
   }
 }
+
 class EvilCircle extends Shape {
   constructor(x, y, velX, velY, color, size) {
     super(x, y, 20, 20);
@@ -131,6 +132,7 @@ class EvilCircle extends Shape {
     }
   }
 }
+
 const evil = new EvilCircle(20, 20, 20, 20, "white", 10);
 const balls = [];
 
@@ -168,59 +170,24 @@ function loop() {
   requestAnimationFrame(loop);
   score.textContent = count;
   if (count === 0) {
-    alert("gameover");
+    // alert("gameover");
+    restartButton.style.display = "block";
   }
 }
 
 loop();
 
-window.addEventListener("keydown", (event) => {
-  // switch (event.key) {
-  // case "a":
-  //   this.x -= this.velX;
-  //   break;
-  // case "d":
-  //   this.x += this.velX;
-  //   break;
-  // case "w":
-  //   this.y -= this.velY;
-  //   break;
-  // case "s":
-  //   this.y += this.velY;
-  //   break;
-  // if (event.key === "a" || event.key == "Left" || event.key == "ArrowLeft") {
-  //   this.x -= this.xVel;
-  // } else if (
-  //   event.key == "d" ||
-  //   event.key == "Right" ||
-  //   event.key == "ArrowRight"
-  // ) {
-  //   this.x += this.xVel;
-  // } else if (event.key == "w" || event.key == "Up" || event.key == "ArrowUp") {
-  //   this.y -= this.yVel;
-  // } else if (
-  //   event.key == "s" ||
-  //   event.key == "Down" ||
-  //   event.key == "ArrowDown"
-  // ) {
-  //   this.y += this.yVel;
-  // }
-  evil.checkBounds();
-  if (event.key === "a" || event.key == "Left" || event.key == "ArrowLeft") {
-    evil.x -= 20;
-  } else if (
-    event.key == "d" ||
-    event.key == "Right" ||
-    event.key == "ArrowRight"
-  ) {
-    evil.x += 20;
-  } else if (event.key == "w" || event.key == "Up" || event.key == "ArrowUp") {
-    evil.y -= 20;
-  } else if (
-    event.key == "s" ||
-    event.key == "Down" ||
-    event.key == "ArrowDown"
-  ) {
-    evil.y += 20;
-  }
+canvas.addEventListener("mousemove", (event) => {
+  evil.x = event.clientX;
+  evil.y = event.clientY;
+});
+
+canvas.addEventListener("touchmove", (event) => {
+  const touch = event.touches[0];
+  evil.x = touch.clientX;
+  evil.y = touch.clientY;
+});
+
+restartButton.addEventListener("click", () => {
+  location.reload();
 });

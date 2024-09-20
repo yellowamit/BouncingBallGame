@@ -1,21 +1,28 @@
 <!DOCTYPE html>
-<html lang="en-US">
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Bouncing balls</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ball Game</title>
+  <style>
+    canvas {
+      display: block;
+    }
+    #restartButton {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
 </head>
-
 <body>
-    <h1>bouncing balls</h1>
-    <p>
-
-    </p>
-    <canvas></canvas>
-
-    <script src="script.js"></script>
+  <canvas></canvas>
+  <p id="score">0</p>
+  <button id="restartButton">Restart Game</button>
+  <script src="script.js"></script>
 </body>
-
 </html>
